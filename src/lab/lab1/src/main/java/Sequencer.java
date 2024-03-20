@@ -4,13 +4,13 @@ public class Sequencer {
     private final long n;
     private long x;
 
-    private boolean czyPierwsza(long a) {
+    private boolean czyZlozona(long a) {
         for(int i = 2; i<=Math.sqrt(a); i++) {
             if (a%i==0) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
     private long nwd(long a, long b) {
         while(a!=b) {
@@ -39,17 +39,11 @@ public class Sequencer {
             q++;
         }
 
-        boolean pprime = czyPierwsza(p);
-        boolean qprime = czyPierwsza(q);
-
-        while(!pprime) {
-            p +=4;
-            pprime = czyPierwsza(p);
+        while(czyZlozona(p)) {
+            p++;
         }
-
-        while(!qprime) {
-            q +=4;
-            qprime = czyPierwsza(q);
+        while(czyZlozona(q)) {
+            q++;
         }
 
         n = p * q;
