@@ -1,15 +1,12 @@
-package lab.lab2.src.main.java;
+package lab.lab2;
 
 import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Base64;
 
 public class Encryptor {
 
-    private long e;
-    private long d;
-    private long n;
+    private final long e;
+    private final long d;
+    private final long n;
 
     public Encryptor(long e, long d, long n) {
         this.e = e;

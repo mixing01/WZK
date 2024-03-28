@@ -1,21 +1,20 @@
-package lab.lab2.src.main.java;
+package lab.lab2;
 
 import java.math.BigInteger;
 import java.util.Random;
 
 public class DHUser {
-    private long g;
-    private long n;
-    private long myPrivateKey;
+    private final long n;
+    private final long myPrivateKey;
 
-    private long calculatedNumber;
+    private final long calculatedNumber;
 
     private long otherUserKey = -1;
 
     private long sessionKey;
     public DHUser(DHInitializer initializer) {
         n = initializer.getN();
-        g = initializer.getG();
+        long g = initializer.getG();
         Random random = new Random();
         myPrivateKey = random.nextLong(1000,100000);
         calculatedNumber = BigInteger.valueOf(g).modPow(BigInteger.valueOf(myPrivateKey),BigInteger.valueOf(n)).longValue();

@@ -1,14 +1,19 @@
-package lab.lab2.src.main.java;
+package lab.lab2;
 
 import java.math.BigInteger;
 
 public class App {
 
-    private static void lab2_1() {
+    private static void lab21() {
         Keygen keygen = new Keygen(1351, 5422, 2);
-        System.out.println(keygen.getN());
         Encryptor encryptor = new Encryptor(keygen.getE(), keygen.getD(), keygen.getN());
 
+        System.out.println("p: "+ keygen.getP());
+        System.out.println("q: "+ keygen.getQ());
+        System.out.println("e: "+ keygen.getE());
+        System.out.println("d: "+ keygen.getD());
+        System.out.println("n: "+ keygen.getN());
+        System.out.println();
         System.out.println("Treść niezaszyfrowanej wiadomości:");
         String message = "Niezaszyfrowana wiadomosc, calkiem fajna";
         System.out.println(message);
@@ -22,7 +27,7 @@ public class App {
         System.out.println(encryptor.decrypt(encrypted));
     }
 
-    private static void lab2_2() {
+    private static void lab22() {
         DHInitializer dhInitializer = new DHInitializer();
         DHUser user1 = new DHUser(dhInitializer);
         DHUser user2 = new DHUser(dhInitializer);
@@ -42,13 +47,13 @@ public class App {
         System.out.println("\n"+border);
         System.out.println(header);
         System.out.println(border+"\n");
-        lab2_1();
+        lab21();
 
         header = "Zadanie 2.2.";
         border = "=".repeat(header.length());
         System.out.println("\n"+border);
         System.out.println(header);
         System.out.println(border+"\n");
-        lab2_2();
+        lab22();
     }
 }
