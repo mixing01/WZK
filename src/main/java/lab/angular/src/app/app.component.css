@@ -1,0 +1,49 @@
+:host {
+  --content-padding: 10px;
+}
+.content {
+  padding: var(--content-padding);
+}
+header {
+
+  --height: 10vh;
+  height: var(--height);
+  width:100%;
+  padding: var(--content-padding);
+  box-shadow: 0px 5px 25px var(--shadow-color);
+  background-color: white;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+}
+.header-div {
+  height: 80px;
+}
+.list-header {
+  display: flex;
+  align-content: center;
+  height: var(--height);
+  line-height: var(--height);
+}
+#list-header-text {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  line-height: 1;
+  align-self: center;
+  display: inline-block;
+  margin-left: 10px;
+  font-size : clamp(20px, 3vw, 6000px);
+  vertical-align: middle;
+
+}
+.list-header-logo {
+  display: block;
+  margin: 0px;
+  height: var(--height);
+  margin-left: 5px;
+}
+img.list-header-logo {
+  border-radius: 10px;
+}
+img.list-header-logo:hover {
+  background-color: gray;
+}

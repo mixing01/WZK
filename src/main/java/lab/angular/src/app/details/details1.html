@@ -1,0 +1,33 @@
+<article>
+    <header>
+        <h2>
+            Informacje wstępne
+        </h2>
+        <p>
+            Generator	 BBS	 (Blum-Blum-Shub) – to	 algorytm	polegający	na	 obliczaniu	 reszt	
+            kwadratowych	modulo	n. Pozwala	na	generowanie	kluczy	strumieniowych	o	określonej
+            długości	 w	 sposób	 pseudolosowy.	 Podstawową	 trudność	 użycia	 algorytmu	 stanowi	
+            wyznaczenie liczby	Bluma,	 czyli	liczby	N=p*q, przy	 założeniu,	 że	 p	i	 q	to	odpowiednio	
+            duże liczby	 pierwsze,	 przystające	 do	 3	 modulo	 4,	 od	 których	 zależy	 bezpieczeństwo	 i	
+            jakość	generatora. 
+        </p>
+    </header>
+    <main>
+
+        <h2>
+            Generacja i testy ciągu pseudolosowego
+        </h2>
+        <button (click)="onClick()">
+            Generuj
+        </button>
+        <h3>
+            {{sequenceHeader}}
+        </h3>
+        <div id="sequenceDiv" [ngClass]="{full:isGenerated}">
+            <p>
+                {{sequence}}
+            </p>
+        </div>
+        
+    </main>
+</article>
