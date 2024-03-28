@@ -1,31 +1,11 @@
-package lab.lab1.src.main.java;
+package lab.lab1;
+
+import lab.Helper;
 
 public class Sequencer {
     private final long n;
     private long x;
 
-    private boolean czyZlozona(long a) {
-        for(int i = 2; i<=Math.sqrt(a); i++) {
-            if (a%i==0) {
-                return true;
-            }
-        }
-        return false;
-    }
-    private long nwd(long a, long b) {
-        while(a!=b) {
-            if (a>b) {
-                a -= b;
-            } else {
-                b -= a;
-            }
-        }
-        return a;
-    }
-
-    private boolean czyWzgledniePierwsze(long a, long b) {
-        return nwd(a, b)==1;
-    }
     public Sequencer(long p0, long q0, long x0) {
         long p = p0;
         long q = q0;
@@ -39,15 +19,15 @@ public class Sequencer {
             q++;
         }
 
-        while(czyZlozona(p)) {
-            p++;
+        while(Helper.isComposite(p)) {
+            p+=4;
         }
-        while(czyZlozona(q)) {
-            q++;
+        while(Helper.isComposite(q)) {
+            q+=4;
         }
 
         n = p * q;
-        while(!czyWzgledniePierwsze(x, n)) {
+        while(!Helper.areCoprime(x, n)) {
             x+=1;
         }
     }

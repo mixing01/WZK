@@ -1,29 +1,24 @@
-package lab.lab1.src.main.java;
+package lab.lab1;
 
 public class SequenceTester implements Tester{
 
     String sequence;
     int length;
-    // Dolne granice testu serii dla sekwencji o długościach 1, 2, 3, 4, 5 oraz 6 i więcej
-    private final int[] lowerBounds = {2315,1114,527,240,103,103};
 
-    // Gorne granice testu serii dla sekwencji o długościach 1, 2, 3, 4, 5 oraz 6 i więcej
-    private final int[] upperBounds = {2685,1386,723,384,209,209};
+    boolean shortTest = true;
 
-    // Liczba wystąpień sekwencji zer o długościach 1, 2, 3, 4, 5 oraz 6 i więcej
-    private final int[] zeroSequences = {0,0,0,0,0,0};
+    private final int[] lowerBounds = {2315,1114,527,240,103,103}; // Dolne granice testu serii dla sekwencji o długościach 1, 2, 3, 4, 5 oraz 6 i więcej
 
-    // Liczba wystąpień sekwencji jedynek o długościach 1, 2, 3, 4, 5 oraz 6 i więcej
-    private final int[] oneSequences = {0,0,0,0,0,0};
+    private final int[] upperBounds = {2685,1386,723,384,209,209}; // Gorne granice testu serii dla sekwencji o długościach 1, 2, 3, 4, 5 oraz 6 i więcej
 
-    // Pomocnicza zmienna - dlugosc obecnie sprawdzanego nieprzerwanego ciagu jedynek
-    private int oneSeqLen = 1;
+    private final int[] zeroSequences = {0,0,0,0,0,0}; // Liczba wystąpień sekwencji zer o długościach 1, 2, 3, 4, 5 oraz 6 i więcej
 
-    // Pomocnicza zmienna - dlugosc obecnie sprawdzanego nieprzerwanego ciagu zer
-    private int zeroSeqLen = 1;
 
-    // Pomocnicza zmienna - dlugosc najdluzszej serii tych samych bitow
-    int maxSeqLen = 1;
+    private final int[] oneSequences = {0,0,0,0,0,0}; // Liczba wystąpień sekwencji jedynek o długościach 1, 2, 3, 4, 5 oraz 6 i więcej
+
+    private int oneSeqLen = 1; // Pomocnicza zmienna - dlugosc obecnie sprawdzanego nieprzerwanego ciagu jedynek
+
+    private int zeroSeqLen = 1; // Pomocnicza zmienna - dlugosc obecnie sprawdzanego nieprzerwanego ciagu zer
 
     public SequenceTester(String sequence) {
         this.sequence = sequence;
@@ -63,9 +58,6 @@ public class SequenceTester implements Tester{
                 zeroSequences[zeroSeqLen-1]++;
             zeroSeqLen = 1;
         }
-
-        if (zeroSeqLen > maxSeqLen)
-            maxSeqLen = zeroSeqLen; // Zapisuj najdluzsza dotychczasowa serie tych samych bitow
     }
 
     private void testSequenceOnes(int i) {
@@ -79,24 +71,13 @@ public class SequenceTester implements Tester{
                 oneSeqLen = 1;
             }
 
-        if(oneSeqLen > maxSeqLen)
-            maxSeqLen = oneSeqLen; // Zapisuj najdluzsza dotychczasowa serie tych samych bitow
+
     }
 
     @Override
-    public void test() {
-
-        // Zmienna okreslajaca, czy sekwencja zdala test serii
-        boolean shortTest = true;
-
-        // Zmienna okreslajaca, czy sekwencja zdala test dlugiej serii
-        boolean longTest = true;
+    public boolean test() {
 
         testSequences();
-
-        if (maxSeqLen>25) {
-            longTest = false;
-        }
 
         // Sprawdzenie czy liczba wystapien serii miesci sie w odpowiednich przedzialach
         for(int i = 0; i<6; i++){
@@ -106,9 +87,10 @@ public class SequenceTester implements Tester{
                 break;
             }
         }
-
-
-
+        return shortTest;
+    }
+    @Override
+    public void printResults() {
         // Moje dziwne cośki do ładnego wypisywania
         String lineBreak = "-".repeat(48);
         System.out.println("\nDla ciągów zer uzyskano następujące wyniki:");
@@ -146,20 +128,6 @@ public class SequenceTester implements Tester{
             System.out.println(border+"\n");
         }
 
-        System.out.println("Najdluzszy ciag tych samych bitow ma dlugosc "+maxSeqLen);
-        if(longTest){
-            String result = "Test dlugiej serii zaliczony";
-            String border = "=".repeat(result.length());
-            System.out.println("\n"+border);
-            System.out.println(result);
-            System.out.println(border+"\n");
-        }
-        else {
-            String result = "Test dlugiej serii niezaliczony";
-            String border = "=".repeat(result.length());
-            System.out.println("\n"+border);
-            System.out.println(result);
-            System.out.println(border+"\n");
-        }
+
     }
 }
