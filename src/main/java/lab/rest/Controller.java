@@ -1,6 +1,8 @@
 package lab.rest;
 
 import lab.lab1.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -17,19 +19,24 @@ public class Controller {
         return map;
     }
     @GetMapping("/lab1")
-    public Map<String, String> lab1(@RequestParam long p0, @RequestParam long q0, @RequestParam long x0, @RequestParam long length) {
-        HashMap<String, String> map = new HashMap<>();
+    public String lab1(@RequestParam long p0, @RequestParam long q0, @RequestParam long x0, @RequestParam long length) {
+        JSONObject jsonObject = new JSONObject();
         Sequencer sequencer = new Sequencer(p0, q0, x0);
         String sequence = sequencer.generate(length);
         StatisticTester statisticTester = new StatisticTester(sequence);
         SequenceTester sequenceTester = new SequenceTester(sequence);
         LongSequenceTester longSequenceTester = new LongSequenceTester(sequence);
         PokerTester pokerTester = new PokerTester(sequence);
-        map.put("sequence",sequence);
-        map.put("statisticTest",""+statisticTester.test());
-        map.put("sequenceTest",""+sequenceTester.test());
-        map.put("longSequenceTest",""+longSequenceTester.test());
-        map.put("pokerTest",""+pokerTester.test());
-        return map;
+        jsonObject.put("sequence",sequence);
+        jsonObject.put("statisticTest",statisticTester.test());
+        jsonObject.put("sumOfOnes",statisticTester.getSumOfOnes());
+        jsonObject.put("sequenceTest",sequenceTester.test());
+        jsonObject.put("zeroSequences",sequenceTester.getZeroSequences());
+        jsonObject.put("oneSequences",sequenceTester.getOneSequences());
+        jsonObject.put("longSequenceTest",longSequenceTester.test());
+        jsonObject.put("maxSeqLen",longSequenceTester.getMaxSeqLen());
+        jsonObject.put("pokerTest",pokerTester.test());
+        jsonObject.put("combinationCounts",pokerTester.getCombinationCounts());
+        return jsonObject.toString();
     }
 }
