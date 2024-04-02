@@ -43,4 +43,8 @@ public class LongSequenceTester implements Tester {
             System.out.println(border+"\n");
         }
     }
+
+    public int getMaxSeqLen() {
+        return maxSeqLen;
+    }
 }

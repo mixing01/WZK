@@ -66,4 +66,8 @@ public class PokerTester implements Tester{
         }
 
     }
+
+    public int[] getCombinationCounts() {
+        return combinationCounts;
+    }
 }

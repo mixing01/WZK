@@ -130,4 +130,12 @@ public class SequenceTester implements Tester{
 
 
     }
+
+    public int[] getOneSequences() {
+        return oneSequences;
+    }
+
+    public int[] getZeroSequences() {
+        return zeroSequences;
+    }
 }

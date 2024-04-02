@@ -37,4 +37,7 @@ public class StatisticTester implements Tester {
             System.out.println(border+"\n");
         }
     }
+    public long getSumOfOnes() {
+        return sumOfOnes;
+    }
 }
