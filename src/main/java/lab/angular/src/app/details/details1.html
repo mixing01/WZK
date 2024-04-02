@@ -17,9 +17,37 @@
         <h2>
             Generacja i testy ciągu pseudolosowego
         </h2>
-        <button (click)="onClick()">
-            Generuj
-        </button>
+        <div class="input-div">
+            <form [formGroup]="lab1input" (ngSubmit)="onSubmit()" class="input-div">
+            <button type="submit" (click)="onClick()">
+                Generuj
+            </button>
+            <div class="input-div-child">
+                <h5 class="input-header">
+                    Wartość parametru 'p':
+                </h5>
+               <input class="input-field" formControlName="p" type="number" inputmode="numeric" title="Wartość parametru 'p'" step="1"/> 
+            </div>
+            <div class="input-div-child">
+                <h5 class="input-header">
+                    Wartość parametru 'q':
+                </h5>
+                <input class="input-field" formControlName="q" type="number" inputmode="numeric" title="Wartość parametru 'q'" step="1"/>
+            </div>
+            <div class="input-div-child">
+                <h5 class="input-header">
+                    Wartość parametru 'x':
+                </h5>
+                <input class="input-field" formControlName="x" type="number" inputmode="numeric" title="Wartość parametru 'x'" step="1"/>
+            </div>
+            <button type="submit" (click)="onClickRandom()" id="randomButton">
+                Generuj losowo
+            </button>
+            </form>            
+
+
+        </div>
+
         <h3>
             {{sequenceHeader}}
         </h3>
@@ -27,6 +55,52 @@
             <p>
                 {{sequence}}
             </p>
+        </div>
+        <div id="main-test-div" [ngStyle]="{'display': isGenerated ? 'flex' : 'none'}">
+            <div>
+                <h3 [ngStyle]="{'color': statisticTest ? 'green' : 'red'}">Test statystyczny</h3>
+                <table style="border: 1px solid;"><tr><td style="border: 1px solid;">Liczba jedynek: {{sumOfOnes}}</td></tr></table>
+            </div>
+            <div>
+                <h3 [ngStyle]="{'color': sequenceTest ? 'green' : 'red'}">Test serii</h3>
+                <table id="sequence-table">
+                    <tr><td colspan="3">Liczba serii o danej długości</td></tr>
+                    <tr><td>Długość serii</td><td>Jedynki</td><td>Zera</td></tr>
+                    <tr><td>1</td><td>{{oneSequences[0]}}</td><td>{{zeroSequences[0]}}</td></tr>
+                    <tr><td>2</td><td>{{oneSequences[1]}}</td><td>{{zeroSequences[1]}}</td></tr>
+                    <tr><td>3</td><td>{{oneSequences[2]}}</td><td>{{zeroSequences[2]}}</td></tr>
+                    <tr><td>4</td><td>{{oneSequences[3]}}</td><td>{{zeroSequences[3]}}</td></tr>
+                    <tr><td>5</td><td>{{oneSequences[4]}}</td><td>{{zeroSequences[4]}}</td></tr>
+                    <tr><td>6+</td><td>{{oneSequences[5]}}</td><td>{{zeroSequences[5]}}</td></tr>
+                </table>
+            </div>
+            <div>
+                <h3 [ngStyle]="{'color': longSequenceTest ? 'green' : 'red'}">Test długiej serii</h3>
+                <table style="border: 1px solid;"><tr><td style="border: 1px solid;">Maksymalna długość serii jednakowych bitów: {{maxSeqLen}}</td></tr></table>
+            </div>
+            <div>
+                <h3 [ngStyle]="{'color': pokerTest ? 'green' : 'red'}">Test pokerowy</h3>
+                <table id="poker-table">
+                    <tr><td colspan="2">Liczba serii o danej długości</td></tr>
+                    <tr><td>Zapis dziesiętny czwórki bitów</td><td>Liczba wystąpień</td></tr>
+                    <tr><td>0</td><td>{{combinationCounts[0]}}</td></tr>
+                    <tr><td>1</td><td>{{combinationCounts[1]}}</td></tr>
+                    <tr><td>2</td><td>{{combinationCounts[2]}}</td></tr>
+                    <tr><td>3</td><td>{{combinationCounts[3]}}</td></tr>
+                    <tr><td>4</td><td>{{combinationCounts[4]}}</td></tr>
+                    <tr><td>5</td><td>{{combinationCounts[5]}}</td></tr>
+                    <tr><td>6</td><td>{{combinationCounts[6]}}</td></tr>
+                    <tr><td>7</td><td>{{combinationCounts[7]}}</td></tr>
+                    <tr><td>8</td><td>{{combinationCounts[8]}}</td></tr>
+                    <tr><td>9</td><td>{{combinationCounts[9]}}</td></tr>
+                    <tr><td>10</td><td>{{combinationCounts[10]}}</td></tr>
+                    <tr><td>11</td><td>{{combinationCounts[11]}}</td></tr>
+                    <tr><td>12</td><td>{{combinationCounts[12]}}</td></tr>
+                    <tr><td>13</td><td>{{combinationCounts[13]}}</td></tr>
+                    <tr><td>14</td><td>{{combinationCounts[14]}}</td></tr>
+                    <tr><td>15</td><td>{{combinationCounts[15]}}</td></tr>
+                </table>
+            </div>
         </div>
         
     </main>

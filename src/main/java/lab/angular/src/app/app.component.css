@@ -31,7 +31,7 @@ header {
   align-self: center;
   display: inline-block;
   margin-left: 10px;
-  font-size : clamp(20px, 3vw, 6000px);
+  font-size : clamp(5px, 3vw, 6000px);
   vertical-align: middle;
 
 }
