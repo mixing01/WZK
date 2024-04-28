@@ -103,7 +103,7 @@ public class App {
             System.out.println("Test SAC - funkcja "+Helper.functionNames.get(function));
             String res1 = hasher.hash(function,sac1).toString();
             String res2 = hasher.hash(function,sac2).toString();
-            String xor = Helper.XOR(res1,res2);
+            String xor = Helper.xor(res1,res2);
             System.out.println("Skrót 1: "+res1);
             System.out.println("Skrót 2: "+res2);
             System.out.println("Bitowy XOR: "+xor);
