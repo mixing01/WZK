@@ -1,6 +1,11 @@
 package lab.lab3;
 
 public class HashResult {
+
+    @Override
+    public String toString() {
+        return hashedText;
+    }
     private final String hashFunction;
     private final String originalText;
     private final String hashedText;
