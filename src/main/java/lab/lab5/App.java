@@ -10,6 +10,7 @@ public class App {
         for (Share s : shares) {
             System.out.println(s);
         }
+        usedShares.add(shares.get(0));
         usedShares.add(shares.get(2));
         usedShares.add(shares.get(3));
         System.out.println(ShamirReader.recoverSecret(usedShares,generator.getP()));
