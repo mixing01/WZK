@@ -25,8 +25,6 @@ public class ShamirGenerator {
             this.n = n;
             this.s = s;
             this.p = (int) Helper.makePrime(p);
-            System.out.println(this.p);
-            System.out.println();
 
             coefficients = new ArrayList<>();
             shares = new ArrayList<>();

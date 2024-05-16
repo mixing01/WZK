@@ -26,13 +26,10 @@ public class ShamirReader {
 
         }
         BigInteger resultBigInt = numerator.divide(denominator).multiply(BigInteger.valueOf(si.getShareValue()));
-        System.out.println(resultBigInt);
         while(resultBigInt.compareTo(BigInteger.ZERO) < 0) {
             resultBigInt = resultBigInt.add(BigInteger.valueOf(p));
         }
         resultBigInt = resultBigInt.mod(BigInteger.valueOf(p));
-        System.out.println(resultBigInt);
-        System.out.println();
         return resultBigInt.intValue();
     }
 }
